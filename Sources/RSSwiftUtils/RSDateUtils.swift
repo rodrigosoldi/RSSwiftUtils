@@ -64,4 +64,19 @@ public struct RSDateUtils {
         return calendar.range(of: .day, in: .month, for: date)!        
     }
     
+    public static func makeDate(day: Int, month: Int, year: Int) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.date(from: "\(day)/\(month)/\(year)")
+    }
+    
+    public static func makeDates(for days: Range<Int>? = nil, month: Int, year: Int) -> [Date] {
+        var _days = getDaysIn(month: month, year: year)
+        if let days {
+            _days = days
+        }
+        
+        return _days.compactMap({ Self.makeDate(day: $0, month: month, year: year) })
+    }
+    
 }
