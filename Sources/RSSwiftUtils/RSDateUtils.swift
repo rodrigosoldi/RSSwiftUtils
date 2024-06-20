@@ -55,4 +55,13 @@ public struct RSDateUtils {
         return calendar.date(from: dateComponents)
     }
     
+    public static func getDaysIn(month: Int, year: Int) -> Range<Int> {
+        let calendar = Calendar.current
+
+        let dateComponents = DateComponents(year: year, month: month)
+        let date = calendar.date(from: dateComponents)!
+
+        return calendar.range(of: .day, in: .month, for: date)!        
+    }
+    
 }
