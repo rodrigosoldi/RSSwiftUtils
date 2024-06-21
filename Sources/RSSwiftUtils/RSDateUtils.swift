@@ -79,4 +79,21 @@ public struct RSDateUtils {
         return _days.compactMap({ Self.makeDate(day: $0, month: month, year: year) })
     }
     
+    public static func getDatesForCurrentWeek() -> [Date] {
+        var calendar = Calendar.current
+        calendar.firstWeekday = 1 // Define first day of week as sunday
+
+        let today = Date()
+        let components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)
+        let startOfWeek = calendar.date(from: components)!
+
+        var dates = [Date]()
+        for i in 0..<7 {
+            if let date = calendar.date(byAdding: .day, value: i, to: startOfWeek) {
+                dates.append(date)
+            }
+        }
+        return dates
+    }
+    
 }
