@@ -17,28 +17,28 @@ public struct RSDateUtils {
         return calendar.component(component, from: date)
     }
     
-    public static func incDay(_ date: Date = Date()) -> Date? {
-        return Calendar.current.date(byAdding: .day, value: 1, to: date)
+	public static func incDay(_ date: Date = Date(), value: Int = 1) -> Date? {
+        return Calendar.current.date(byAdding: .day, value: value, to: date)
     }
     
-    public static func incWeek(_ date: Date = Date()) -> Date? {
-        return Calendar.current.date(byAdding: .day, value: 7, to: date)
+	public static func incWeek(_ date: Date = Date(), value: Int = 7) -> Date? {
+        return Calendar.current.date(byAdding: .day, value: value, to: date)
     }
     
-    public static func incHour(_ date: Date = Date()) -> Date? {
-        return Calendar.current.date(byAdding: .hour, value: 1, to: date)
+	public static func incHour(_ date: Date = Date(), value: Int = 1) -> Date? {
+        return Calendar.current.date(byAdding: .hour, value: value, to: date)
     }
     
-    public static func incMinute(_ date: Date = Date()) -> Date? {
-        return Calendar.current.date(byAdding: .minute, value: 1, to: date)
+	public static func incMinute(_ date: Date = Date(), value: Int = 1) -> Date? {
+        return Calendar.current.date(byAdding: .minute, value: value, to: date)
     }
     
-    public static func previousWeek(_ date: Date = Date()) -> Date? {
-        return Calendar.current.date(byAdding: .day, value: -7, to: date)
+	public static func previousWeek(_ date: Date = Date(), value: Int = -7) -> Date? {
+        return Calendar.current.date(byAdding: .day, value: value, to: date)
     }
     
-    public static func previousDay(_ date: Date = Date()) -> Date? {
-        return Calendar.current.date(byAdding: .day, value: -1, to: date)
+	public static func previousDay(_ date: Date = Date(), value: Int = -1) -> Date? {
+        return Calendar.current.date(byAdding: .day, value: value, to: date)
     }
     
     public static func extractDateWithoutTime(date: Date?) -> Date? {
