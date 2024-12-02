@@ -7,7 +7,7 @@
 
 import Foundation
 
-public func timeoutAsyncTask<T, E: Error>(timeout: Int, error: E, _ operation: @escaping () async throws -> T) async throws -> T {
+public func timeoutAsyncTask<T>(timeout: Int, _ operation: @escaping () async throws -> T, fallback: @escaping () async throws -> T) async throws -> T {
     let mainTask = Task {
         let taskResult: T = try await operation()
         try Task.checkCancellation()
@@ -17,7 +17,7 @@ public func timeoutAsyncTask<T, E: Error>(timeout: Int, error: E, _ operation: @
     let timeoutTask = Task {
         try await Task.sleep(nanoseconds: UInt64(timeout) * NSEC_PER_SEC)
         mainTask.cancel()
-        throw error
+        return try await fallback()
     }
         
     let result = try await mainTask.value
