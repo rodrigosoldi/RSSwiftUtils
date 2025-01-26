@@ -9,7 +9,7 @@ import Foundation
 
 public extension String {
  
-    public func removeAccents() -> String {
+    func removeAccents() -> String {
         folding(options: .diacriticInsensitive, locale: .current)
     }
     
