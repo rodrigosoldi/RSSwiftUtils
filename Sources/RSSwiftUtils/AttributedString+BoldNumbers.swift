@@ -12,7 +12,7 @@ public extension AttributedString {
     
     func formattedTextWithBoldNumbers(font: Font) -> AttributedString {
         var attributedString = self
-        let regex = try? NSRegularExpression(pattern: "\\d+", options: [])
+        let regex = try? NSRegularExpression(pattern: "\\d+\\S*", options: [])
         let nsText = String(attributedString.characters) as NSString
         let matches = regex?.matches(in: String(attributedString.characters), options: [], range: NSRange(location: 0, length: nsText.length)) ?? []
 
