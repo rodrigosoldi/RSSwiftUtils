@@ -34,12 +34,12 @@ extension AttributedString {
 
             let boldText = String(input[groupRange].characters)  // Texto sem delimitadores
 
-            // Substitui a string original removendo os delimitadores
-            attributedString.replaceSubrange(fullRange, with: AttributedString(boldText))
+            // Substitui a string original removendo os delimitadores e captura o novo range
+            let replacementRange = fullRange
+            attributedString.replaceSubrange(replacementRange, with: AttributedString(boldText))
 
-            // Calcula o novo range de forma mais segura
-            let newStart = attributedString.index(
-                attributedString.startIndex, offsetByCharacters: match.range.location)
+            // O novo range começa no início do range original e tem o tamanho do texto sem delimitadores
+            let newStart = replacementRange.lowerBound
             let newEnd = attributedString.index(newStart, offsetByCharacters: boldText.count)
             let updatedRange = newStart..<newEnd
 
