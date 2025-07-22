@@ -1,0 +1,25 @@
+# RSSwiftUtils Project Rules
+
+## Build and Deploy Rule
+
+When the user says "build and deploy" or "bd", execute the following sequence:
+
+1. Check git status for changes
+2. If there are changes:
+   - Automatically update or create README.md with:
+     * a detailed project description
+     * how to use     
+     * Update any version references if needed
+     * Ensure all information is current and accurate
+   - Add all changes to staging with `git add -A`
+   - Get the latest tag number and increment it by 1
+   - Create a commit with a descriptive message about the changes
+   - Create a new tag with the incremented version number
+   - Push both the commit and tag to the remote repository
+3. Provide a summary of what was completed
+
+This rule automates the complete build, database generation, README update, and deployment process.
+
+## Project Information
+
+- This is a Swift Package Manager (SPM) project for utils functions to use in another projects
